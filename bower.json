@@ -1,0 +1,9 @@
+{
+  "name": "Jeanny",
+  "version": "0.1.0",
+  "dependencies": {
+    "threejs": "",
+    "requirejs": "~2.1.9"
+  }
+}
+
