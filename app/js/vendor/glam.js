@@ -58651,8 +58651,11 @@ glam.parser = {
 		    	var i, len = mutation.removedNodes.length;
 		    	for (i = 0; i < len; i++) {
 		    		var node = mutation.removedNodes[i];
-		    		var viewer = glam.viewers[doc.id];
-			    	viewer.removeNode(node);
+
+		    		if (node.glam) {
+		    			var viewer = glam.viewers[doc.id];
+			    		viewer.removeNode(node);
+			    	}
 		    	}
 		    }
 		    else if (mutation.type == "attributes") {
@@ -59377,7 +59380,7 @@ glam.Text.createVisual = function(docelt, material, param) {
 				material: textmat
 			});
 
-	THREE.GeometryUtils.center(textGeo);
+	textGeo.center();
 	
 	return visual;
 }
@@ -59878,7 +59881,6 @@ glam.Viewer.prototype.addNode = function(docelt) {
 }
 
 glam.Viewer.prototype.removeNode = function(docelt) {
-
 	var obj = docelt.glam.object;
 	if (obj) {
 		obj._parent.removeChild(obj);
